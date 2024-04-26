@@ -10,7 +10,7 @@ This project created using version 3 manifest_json, and typescript
 1. Clone repository
 
 ```bash
-  git clone
+  git clone https://github.com/Aureo-Bueno/chrome-extension-notification
 ```
 
 2. Build project
