@@ -18,16 +18,17 @@
   "bugs": "",
   "keywords": [],
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name": "Aureo Alexandre Bueno Azevedo",
+    "email": "aureoalexandre@outlook.com"
   },
   "contributors": [],
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "npx tsc",
-    "copy_assets": "rsync -av --exclude 'tsconfig.json' --exclude 'src' --exclude 'dist' ./ dist/",
-    "build": "npm run clean && npm run compile && npm run copy_assets"
+    "copy_assets_linux": "rsync -av --exclude 'tsconfig.json' --exclude 'src' --exclude 'dist' ./ dist/",
+    "copy_assets_windows": "robocopy . dist /E /XD dist src tsconfig.json",
+    "build:linux": "npm run clean && npm run compile && npm run copy_assets_linux",
+    "build:windows": "npm run clean && npm run compile && npm run copy_assets_windows"
   },
   "dependencies": {
     "@types/chrome": "^0.0.266",
