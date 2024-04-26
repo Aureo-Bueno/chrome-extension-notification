@@ -13,10 +13,12 @@ This project created using version 3 manifest_json, and typescript
   git clone https://github.com/Aureo-Bueno/chrome-extension-notification
 ```
 
-2. Build project
+2. Build project with linux and windows
 
 ```bash
-  npm run build
+  npm run build:linux
+  # or
+  npm run build:windows
 ```
 
 
