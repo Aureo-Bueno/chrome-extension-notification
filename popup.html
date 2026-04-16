@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productivity Assistant</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>Productivity Assistant</h1>
+        <p id="currentPage" class="subtitle">Loading current tab...</p>
+        <div class="meta-row">
+          <span id="domainBadge" class="badge">Domain: -</span>
+          <span id="alarmSummary" class="badge badge-accent">Reminders: -</span>
+        </div>
+        <div class="meta-row">
+          <span id="notificationPermission" class="status-inline"
+            >Notifications: checking...</span
+          >
+          <button id="testNotification" class="button-secondary" type="button">
+            Test notification now
+          </button>
+        </div>
+      </header>
+
+      <nav class="tabs" role="tablist" aria-label="Popup sections">
+        <button
+          class="tab is-active"
+          data-tab-target="readLaterPanel"
+          role="tab"
+          aria-selected="true"
+          aria-controls="readLaterPanel"
+          type="button"
+        >
+          Read Later
+        </button>
+        <button
+          class="tab"
+          data-tab-target="siteNotesPanel"
+          role="tab"
+          aria-selected="false"
+          aria-controls="siteNotesPanel"
+          type="button"
+        >
+          Site Notes
+        </button>
+        <button
+          class="tab"
+          data-tab-target="extractorPanel"
+          role="tab"
+          aria-selected="false"
+          aria-controls="extractorPanel"
+          type="button"
+        >
+          Extractor
+        </button>
+      </nav>
+
+      <section id="readLaterPanel" class="panel is-active" role="tabpanel">
+        <h2>Read Later With Reminder</h2>
+        <p class="panel-helper">
+          Only items with a future date trigger notification.
+        </p>
+        <div class="row">
+          <label class="field" for="reminderAt">
+            Reminder
+            <input id="reminderAt" type="datetime-local" />
+          </label>
+          <button id="saveReadLater" type="button">Save Current Page</button>
+        </div>
+        <div class="preset-row">
+          <button id="preset30m" class="button-secondary" type="button">
+            +30 min
+          </button>
+          <button id="preset3h" class="button-secondary" type="button">
+            +3 hours
+          </button>
+          <button id="clearReminderInput" class="button-secondary" type="button">
+            Clear date
+          </button>
+        </div>
+        <p id="readLaterStatus" class="status" role="status" aria-live="polite"></p>
+        <ul id="readLaterList" class="list"></ul>
+      </section>
+
+      <section id="siteNotesPanel" class="panel" role="tabpanel">
+        <h2>Site Notes</h2>
+        <p class="panel-helper">
+          Note is saved per domain and loaded automatically.
+        </p>
+        <textarea
+          id="siteNote"
+          placeholder="Write notes for the current domain..."
+          rows="4"
+        ></textarea>
+        <div class="row">
+          <button id="saveNote" type="button">Save Note</button>
+          <p id="noteStatus" class="status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section id="extractorPanel" class="panel" role="tabpanel">
+        <h2>Page Extractor</h2>
+        <p class="panel-helper">
+          Capture headings, key links and excerpt from current page.
+        </p>
+        <div class="row">
+          <button id="extractNow" type="button">Extract This Page</button>
+          <button id="copyMarkdown" type="button" disabled>Copy Markdown</button>
+          <button id="copyJson" type="button" disabled>Copy JSON</button>
+        </div>
+        <p id="extractStatus" class="status" role="status" aria-live="polite"></p>
+        <ul id="extractionList" class="list"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="src/popup/index.js"></script>
+  </body>
+</html>

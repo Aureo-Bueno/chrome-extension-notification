@@ -2,11 +2,26 @@
   "manifest_version": 3,
   "name": "chrome-extension-notification",
   "version": "1.0",
-  "description": "chrome-extension-notification",
-  "action": {},
+  "description": "Read later, site notes and page extraction for Chrome.",
+  "action": {
+    "default_title": "Productivity Assistant",
+    "default_popup": "popup.html"
+  },
   "background": {
     "service_worker": "src/background/index.js",
     "type": "module"
   },
-  "permissions": ["scripting", "activeTab"]
+  "permissions": [
+    "activeTab",
+    "alarms",
+    "notifications",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
 }
